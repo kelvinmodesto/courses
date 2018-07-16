@@ -1,4 +1,4 @@
-/* Engine.js
+﻿/* Engine.js
  * This file provides the game loop functionality (update entities and render),
  * draws the initial game board on the screen, and then calls the update and
  * render methods on your player and enemy objects (defined in your app.js).
@@ -173,7 +173,11 @@ var Engine = (function(global) {
         'assets/images/water-block.png',
         'assets/images/grass-block.png',
         'assets/images/enemy-bug.png',
-        'assets/images/char-boy.png'
+        'assets/images/char-boy.png',
+        'assets/images/char-cat-girl.png',
+        'assets/images/char-horn-girl.png',
+        'assets/images/char-pink-girl.png',
+        'assets/images/char-princess-girl.png'
     ]);
     Resources.onReady(init);
 

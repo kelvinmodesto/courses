@@ -4,12 +4,10 @@
         // we've provided one for you to get started
         this.x = x;
         this.y = y;
-        this.sprite= sprite;
+        this.sprite = sprite;
     }
 
-    update() {
-
-    }
+    update(dt) {  }
 
     // Draw the enemy on the screen, required method for game
     render() {
@@ -21,8 +19,8 @@
 // Enemies our player must avoid
 class Enemy extends Character {
     constructor(x,y) {
-        super(x,y,`assets/images/enemy-bug.png`);
-        this.speed = Math.floor(Math.random()*(250-50+1));
+        super(x,y,'assets/images/enemy-bug.png');
+        this.speed = this.generateSpeed();
     }
 
     // Update the enemy's position, required method for game
@@ -35,14 +33,19 @@ class Enemy extends Character {
         super.render();
     }
 
+    generateSpeed(){
+        return Math.floor(Math.random()*(250-75+1));
+    }
+
 }
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 class Player extends Character {
-    constructor(x,y,sprite) {
-        super(x,y,sprite);
+    constructor(x,y) {
+        super(x,y,'assets/images/char-cat-girl.png');
+        this.speed = 200;
         this.pathImages = `assets/images/`;
         this.characters =   [
                             `${this.pathImages}char-boy.png`,
@@ -51,10 +54,6 @@ class Player extends Character {
                             `${this.pathImages}char-pink-girl.png`,
                             `${this.pathImages}char-princess-girl.png`
                             ];
-        // this.sprite = this.characters[this.chooseCharacter()];
-    }
-
-    update() {
 
     }
 
@@ -62,11 +61,52 @@ class Player extends Character {
         super.render();
     }
 
-    handleInput() {
+    handleInput(e) {
+        switch (e) {
+            case 'left':
+                this.moveLeft();
+                break;
+            case 'right':
+                this.moveRight();
+                break;
+            case 'up':
+                this.moveUp();
+                break;
+            case 'down':
+                this.moveDown();
+                break;
+            default:
+                break;
+        }
+    }
+
+    moveLeft() {
+        if(this.x>0){
+            this.x -=101; 
+        }
+    }
+
+    moveRight() {
+        if(this.x<303){
+            this.x +=101;
+        }
+    }   
+
+    moveUp() {
+        if(this.y>0){
+            this.y -=83;
+        }
+    }
+
+    moveDown() {
+        if(this.y<332){
+            this.y +=83;
+            
+        }
     }
 
     chooseCharacter() {
-        return Math.floor(Math.random()*(5+1))
+        return Math.floor(Math.random()*(4+1))
     }
 
 }
@@ -83,13 +123,13 @@ window.setInterval(
         allEnemies.push(e);
         allEnemies.push(e2);
         allEnemies.push(e3);
-        e.render; 
-        e2.render;
-        e3.render;
+        e.render(); 
+        e2.render();
+        e3.render();
     },5000
 );
 
-const player =  new Player(200,382,`assets/images/char-boy.png`);
+let player =  new Player(200,382);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
