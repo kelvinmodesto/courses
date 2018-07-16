@@ -1,5 +1,5 @@
 // Using father class
-var Character = function() {
+const Character = function() {
 
 };
 
@@ -21,7 +21,7 @@ Character.prototype.handleInput = function() {
 };
 
 // Enemies our player must avoid
-var Enemy = function() {
+const Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -46,8 +46,10 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player =  function() {
+const Player =  function() {
+
     this.pathImages = `assets/images/`;
+
     this.characters =   [
                         `${this.pathImages}char-boy.png`,
                         `${this.pathImages}char-cat-girl.png`,
@@ -58,9 +60,11 @@ var Player =  function() {
 };
 
 Player.prototype.update = function(dt) {
+
 };
 
 Player.prototype.render = function() {
+
 };
 
 Player.prototype.handleInput = function() {
@@ -74,10 +78,10 @@ Player.prototype.chooseCharacter = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-window.allEnemies = new Array();
+const allEnemies = [];
 //console.log(enemy);
 
-window.player =  new Player();
+const player =  new Player();
 //console.log(player);
 
 // This listens for key presses and sends the keys to your
