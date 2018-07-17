@@ -44,7 +44,7 @@ class Enemy extends Character {
 // a handleInput() method.
 class Player extends Character {
     constructor(x,y) {
-        super(x,y,'assets/images/char-cat-girl.png');
+        super(x,y,'assets/images/char-princess-girl.png');
         this.speed = 200;
         this.pathImages = `assets/images/`;
         this.characters =   [
