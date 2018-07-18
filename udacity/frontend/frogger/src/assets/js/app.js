@@ -4,6 +4,8 @@ class Character {
         // we've provided one for you to get started
         this.x = x;
         this.y = y;
+        this.width = 101;
+        this.height = 171;
         this.sprite = sprite;
     }
 
@@ -34,7 +36,7 @@ class Enemy extends Character {
     }
 
     generateSpeed(){
-        return Math.floor(Math.random()*(250-75+1));
+        return Math.floor(Math.random()*(250-100+1));
     }
 
 }
@@ -56,6 +58,11 @@ class Player extends Character {
                             `${this.pathImages}char-princess-girl.png`
                             ];
         this.sprite = this.characters[this.chooseCharacter()];
+    }
+
+    reset(){
+        this.x=200;
+        this.y=400;
     }
 
     render() {
@@ -85,11 +92,7 @@ class Player extends Character {
         }
     }
 
-    checkCollisions(allEnemies) {
-        allEnemies.forEach((enemy) => {
-            (player.x === enemy.x && player.y === enemy.y)?console.log("choque"):console.log("normal")
-        });
-    }
+    
 
     moveLeft() {
         if(this.x>0){
@@ -128,11 +131,20 @@ class Frogger{
         this.player = player;
     }
 
+    checkCollisions(allEnemies) {
+        allEnemies.forEach((enemy) => {
+            (this.player.x < enemy.x + enemy.width 
+             && this.player.x + this.player.width > enemy.x 
+             && this.player.y < enemy.y + enemy.height 
+             && this.player.height + this.player.y > enemy.y)?this.reset():false;
+        });
+    }
+
     runEnemies(){
         setInterval(
             () => {
                 const arr = [50,133,216].filter((elem,index,arr)=>{
-                    return arr.indexOf(elem)<this.getRandomNumber();
+                    return arr.indexOf(elem)<this.getRandomNumber(3,1);
                 })
                 arr.map((e) => {
                     const enemy = new Enemy(0,e);
