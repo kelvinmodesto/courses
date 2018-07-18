@@ -1,4 +1,4 @@
-﻿class Character {
+class Character {
     constructor(x,y,sprite) {
         // Variables applied to each of our instances go here,
         // we've provided one for you to get started
@@ -43,8 +43,9 @@ class Enemy extends Character {
 // This class requires an update(), render() and
 // a handleInput() method.
 class Player extends Character {
-    constructor(x,y) {
-        super(x,y,'assets/images/char-princess-girl.png');
+
+    constructor() {
+        super(200,400,"");
         this.speed = 200;
         this.pathImages = `assets/images/`;
         this.characters =   [
@@ -54,11 +55,15 @@ class Player extends Character {
                             `${this.pathImages}char-pink-girl.png`,
                             `${this.pathImages}char-princess-girl.png`
                             ];
-
+        this.sprite = this.characters[this.chooseCharacter()];
     }
 
     render() {
         super.render();
+    }
+
+    update(dt) {
+
     }
 
     handleInput(e) {
@@ -78,6 +83,12 @@ class Player extends Character {
             default:
                 break;
         }
+    }
+
+    checkCollisions(allEnemies) {
+        allEnemies.forEach((enemy) => {
+            (player.x === enemy.x && player.y === enemy.y)?console.log("choque"):console.log("normal")
+        });
     }
 
     moveLeft() {
@@ -108,28 +119,44 @@ class Player extends Character {
     chooseCharacter() {
         return Math.floor(Math.random()*(4+1))
     }
+}
+
+class Frogger{
+
+    constructor(allEnemies,player) {
+        this.allEnemies = allEnemies;
+        this.player = player;
+    }
+
+    runEnemies(){
+        setInterval(
+            () => {
+                const arr = [50,133,216].filter((elem,index,arr)=>{
+                    return arr.indexOf(elem)<this.getRandomNumber();
+                })
+                arr.map((e) => {
+                    const enemy = new Enemy(0,e);
+                    this.allEnemies.push(enemy);
+                    enemy.render();
+                });
+            },Math.floor(Math.random()*5000+3000)
+        );
+    }
+
+    getRandomNumber(max,min){
+        return Math.floor(Math.random()*max+min);
+    }
 
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const allEnemies = []; 
-window.setInterval(
-    () => { 
-        const e = new Enemy(0,50);
-        const e2 = new Enemy(0,133);
-        const e3 = new Enemy(0,216);
-        allEnemies.push(e);
-        allEnemies.push(e2);
-        allEnemies.push(e3);
-        e.render(); 
-        e2.render();
-        e3.render();
-    },5000
-);
+const allEnemies = [];
+let player =  new Player();
 
-let player =  new Player(200,382);
+const frogger = new Frogger(allEnemies,player);
+frogger.runEnemies(); 
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
