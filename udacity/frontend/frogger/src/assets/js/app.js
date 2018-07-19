@@ -22,6 +22,8 @@ class Character {
 class Enemy extends Character {
     constructor(x,y) {
         super(x,y,'assets/images/enemy-bug.png');
+        this.width = 50;
+        this.height = 50;
         this.speed = this.generateSpeed();
     }
 
@@ -48,6 +50,8 @@ class Player extends Character {
 
     constructor() {
         super(200,400,"");
+        this.width = 50;
+        this.height = 50;
         this.speed = 200;
         this.pathImages = `assets/images/`;
         this.characters =   [
@@ -74,14 +78,12 @@ class Player extends Character {
     }
 
     checkCollisions(allEnemies) {
-
         allEnemies.map((enemy) => {
-            this.x < enemy.x + enemy.width 
+             this.x < enemy.x + enemy.width 
              && this.x + this.width > enemy.x 
              && this.y < enemy.y + enemy.height 
-             && this.height + this.y > enemy.y
-                console.log('true');
-                this.reset();
+             && this.height + this.y > enemy.y?this.reset():false;
+                // this.reset();
         });
     }
 
@@ -155,9 +157,6 @@ class Frogger{
                     this.allEnemies.push(enemy);
                     enemy.render();
                 });
-                // this.allEnemies = this.allEnemies.filter((elem)=>{
-                //     return elem.x<=505;
-                // })
             },Math.floor(Math.random()*5000+3000)
         );
     }
