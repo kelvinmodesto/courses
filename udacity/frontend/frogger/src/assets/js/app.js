@@ -73,6 +73,18 @@ class Player extends Character {
 
     }
 
+    checkCollisions(allEnemies) {
+
+        allEnemies.map((enemy) => {
+            this.x < enemy.x + enemy.width 
+             && this.x + this.width > enemy.x 
+             && this.y < enemy.y + enemy.height 
+             && this.height + this.y > enemy.y
+                console.log('true');
+                this.reset();
+        });
+    }
+
     handleInput(e) {
         switch (e) {
             case 'left':
@@ -131,26 +143,21 @@ class Frogger{
         this.player = player;
     }
 
-    checkCollisions(allEnemies) {
-        allEnemies.forEach((enemy) => {
-            (this.player.x < enemy.x + enemy.width 
-             && this.player.x + this.player.width > enemy.x 
-             && this.player.y < enemy.y + enemy.height 
-             && this.player.height + this.player.y > enemy.y)?this.reset():false;
-        });
-    }
 
     runEnemies(){
         setInterval(
             () => {
                 const arr = [50,133,216].filter((elem,index,arr)=>{
                     return arr.indexOf(elem)<this.getRandomNumber(3,1);
-                })
+                });
                 arr.map((e) => {
                     const enemy = new Enemy(0,e);
                     this.allEnemies.push(enemy);
                     enemy.render();
                 });
+                // this.allEnemies = this.allEnemies.filter((elem)=>{
+                //     return elem.x<=505;
+                // })
             },Math.floor(Math.random()*5000+3000)
         );
     }
