@@ -1,4 +1,4 @@
-﻿/* Engine.js
+/* Engine.js
  * This file provides the game loop functionality (update entities and render),
  * draws the initial game board on the screen, and then calls the update and
  * render methods on your player and enemy objects (defined in your app.js).
@@ -79,7 +79,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        player.checkCollisions(allEnemies);
     }
 
     /* This is called by the update function and loops through all of the
@@ -161,7 +161,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+        player = new Player();
     }
 
     /* Go ahead and load all of the images we know we're going to need to
