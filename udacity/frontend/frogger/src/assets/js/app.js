@@ -5,8 +5,8 @@ class Character {
         // we've provided one for you to get started
         this.x = x;
         this.y = y;
-        this.width = 101;
-        this.height = 171;
+        this.width = 50;
+        this.height = 50;
         this.sprite = sprite;
     }
 
@@ -22,8 +22,6 @@ class Character {
 class Enemy extends Character {
     constructor(x,y) {
         super(x,y,'assets/images/enemy-bug.png');
-        this.width = 50;
-        this.height = 50;
         this.speed = this.generateSpeed();
     }
 
@@ -48,8 +46,6 @@ class Enemy extends Character {
 class Player extends Character {
     constructor() {
         super(200,400);
-        this.width = 50;
-        this.height = 50;
         this.speed = 200;
         this.pathImages = `assets/images/`;
         this.characters =   [
@@ -61,6 +57,8 @@ class Player extends Character {
                             ];
         this.sprite = this.characters[this.chooseCharacter()];
         this.star = `${this.pathImages}Star.png`;
+        this.steps = 0;
+        this.time = 0; 
     }
 
     reset() {
@@ -82,26 +80,27 @@ class Player extends Character {
 
     checkCollisions(allEnemies) {
         allEnemies.map((enemy) => {
-             this.x < enemy.x + enemy.width 
-             && this.x + this.width > enemy.x 
-             && this.y < enemy.y + enemy.height 
-             && this.height + this.y > enemy.y?this.reset():false;
+            this.x < enemy.x + enemy.width && 
+            this.x + this.width > enemy.x && 
+            this.y < enemy.y + enemy.height && 
+            this.height + this.y > enemy.y?
+            this.reset():false;
         });
     }
 
     handleInput(e) {
         switch (e) {
-            case 'left':
-                this.moveLeft();
+            case 'up':
+                this.moveUp();
                 break;
             case 'right':
                 this.moveRight();
                 break;
-            case 'up':
-                this.moveUp();
-                break;
             case 'down':
                 this.moveDown();
+                break;
+            case 'left':
+                this.moveLeft();
                 break;
             default:
                 break;
@@ -113,7 +112,7 @@ class Player extends Character {
     }
 
     actionFinal() {
-        this.renderStar();
+        super.render(this.star,200,200);
         this.reset();
     }
 
