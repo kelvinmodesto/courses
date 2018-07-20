@@ -47,7 +47,7 @@ class Enemy extends Character {
 // a handleInput() method.
 class Player extends Character {
     constructor() {
-        super(200,400,"");
+        super(200,400);
         this.width = 50;
         this.height = 50;
         this.speed = 200;
