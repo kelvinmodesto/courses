@@ -38,7 +38,7 @@ class Enemy extends Character {
     }
 
     generateSpeed(){
-        return Math.floor(Math.random()*(250-100+1));
+        return Math.floor(Math.random()*(250-200)+200);
     }
 
 }
@@ -83,7 +83,6 @@ class Player extends Character {
              && this.x + this.width > enemy.x 
              && this.y < enemy.y + enemy.height 
              && this.height + this.y > enemy.y?this.reset():false;
-                // this.reset();
         });
     }
 
@@ -106,7 +105,13 @@ class Player extends Character {
         }
     }
 
-    
+    isWinner() {
+        return this.y===0;
+    }
+
+    final() {
+        // if()
+    }
 
     moveLeft() {
         if(this.x>0){
@@ -146,7 +151,7 @@ class Frogger{
     }
 
 
-    runEnemies(){
+    runEnemies(max,min){
         setInterval(
             () => {
                 const arr = [50,133,216].filter((elem,index,arr)=>{
@@ -157,9 +162,11 @@ class Frogger{
                     this.allEnemies.push(enemy);
                     enemy.render();
                 });
-            },Math.floor(Math.random()*5000+3000)
+            },Math.floor(Math.random()*(max-min)+min)
         );
     }
+
+   
 
     getRandomNumber(max,min){
         return Math.floor(Math.random()*max+min);
@@ -174,7 +181,7 @@ const allEnemies = [];
 let player =  new Player();
 
 const frogger = new Frogger(allEnemies,player);
-frogger.runEnemies(); 
+frogger.runEnemies(2500,1000); 
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
