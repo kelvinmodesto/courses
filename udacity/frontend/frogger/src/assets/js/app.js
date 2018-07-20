@@ -1,3 +1,4 @@
+//Father class for all Characters 
 class Character {
     constructor(x,y,sprite) {
         // Variables applied to each of our instances go here,
@@ -12,10 +13,9 @@ class Character {
     update(dt) {  }
 
     // Draw the enemy on the screen, required method for game
-    render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    render(sprite,x,y) {
+        ctx.drawImage(Resources.get(sprite), x, y);
     }
-
 }
 
 // Enemies our player must avoid
@@ -34,20 +34,18 @@ class Enemy extends Character {
     }
 
     render() {
-        super.render();
+        super.render(this.sprite,this.x,this.y);
     }
 
     generateSpeed(){
-        return Math.floor(Math.random()*(250-200)+200);
+        return Math.floor(Math.random()*(250-225)+225);
     }
-
 }
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 class Player extends Character {
-
     constructor() {
         super(200,400,"");
         this.width = 50;
@@ -62,19 +60,24 @@ class Player extends Character {
                             `${this.pathImages}char-princess-girl.png`
                             ];
         this.sprite = this.characters[this.chooseCharacter()];
+        this.star = `${this.pathImages}Star.png`;
     }
 
-    reset(){
+    reset() {
         this.x=200;
         this.y=400;
     }
 
     render() {
-        super.render();
+        super.render(this.sprite, this.x, this.y);
     }
 
-    update(dt) {
+    renderStar(x,y) {
+        super.render(this.star,x,y);
+    }
 
+    update() {
+        this.isWinner()?this.actionFinal():false;
     }
 
     checkCollisions(allEnemies) {
@@ -106,36 +109,28 @@ class Player extends Character {
     }
 
     isWinner() {
-        return this.y===0;
+        return this.y<=0;
     }
 
-    final() {
-        // if()
+    actionFinal() {
+        this.renderStar();
+        this.reset();
     }
 
     moveLeft() {
-        if(this.x>0){
-            this.x -=101; 
-        }
+        this.x>0?this.x-=101:false;
     }
 
     moveRight() {
-        if(this.x<303){
-            this.x +=101;
-        }
+        this.x<303?this.x+=101:false;
     }   
 
     moveUp() {
-        if(this.y>0){
-            this.y -=83;
-        }
+        this.y>0?this.y-=83:false;
     }
 
     moveDown() {
-        if(this.y<332){
-            this.y +=83;
-            
-        }
+        this.y<332?this.y+=83:false;
     }
 
     chooseCharacter() {
@@ -143,13 +138,11 @@ class Player extends Character {
     }
 }
 
-class Frogger{
-
+class Frogger {
     constructor(allEnemies,player) {
         this.allEnemies = allEnemies;
         this.player = player;
     }
-
 
     runEnemies(max,min){
         setInterval(
@@ -166,12 +159,9 @@ class Frogger{
         );
     }
 
-   
-
     getRandomNumber(max,min){
         return Math.floor(Math.random()*max+min);
     }
-
 }
 
 // Now instantiate your objects.
@@ -179,9 +169,9 @@ class Frogger{
 // Place the player object in a variable called player
 const allEnemies = [];
 let player =  new Player();
-
 const frogger = new Frogger(allEnemies,player);
-frogger.runEnemies(2500,1000); 
+
+frogger.runEnemies(2000,1000); 
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
