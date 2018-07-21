@@ -116,11 +116,12 @@ class Player extends Character {
 
     //call success message and reset game
     actionFinal() {
-        this.success("Good Job!",`You won using ${this.steps} steps`,'icon');
+        this.generateAlertMessage("Good Job!",`You won using ${this.steps} steps`,'success');
         this.reset();
     }
 
     //generate a alert message using Sweet Alert
+    // Parameter: title,text,icon , title message, text message and icon message 
     generateAlertMessage(title,message,icon) {
         swal({
           title: title,
@@ -155,12 +156,15 @@ class Player extends Character {
     }
 }
 
+//Game general class
 class Frogger {
     constructor(allEnemies,player) {
         this.allEnemies = allEnemies;
         this.player = player;
     }
 
+    //randomly generate enemies
+    // Parameters: max,min, bug speed interval
     runEnemies(max,min){
         setInterval(
             () => {
@@ -175,7 +179,8 @@ class Frogger {
             },Math.floor(Math.random()*(max-min)+min)
         );
     }
-
+    //get a random number in a interval
+    // Parameter: max,min, numbers interval
     getRandomNumber(max,min){
         return Math.floor(Math.random()*max+min);
     }
