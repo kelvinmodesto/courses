@@ -35,6 +35,7 @@ class Enemy extends Character {
         super.render(this.sprite,this.x,this.y);
     }
 
+    //generate a random num for player's speed 
     generateSpeed(){
         return Math.floor(Math.random()*(250-225)+225);
     }
@@ -57,23 +58,22 @@ class Player extends Character {
                             ];
         this.sprite = this.characters[this.chooseCharacter()];
         this.star = `${this.pathImages}Star.png`;
+        //steps counter
         this.steps = 0;
-        this.time = 0; 
     }
 
+    //reset the player's position for the initial position
     reset() {
         this.x=200;
         this.y=400;
+        this.steps=0;
     }
 
     render() {
         super.render(this.sprite, this.x, this.y);
     }
 
-    renderStar(x,y) {
-        super.render(this.star,x,y);
-    }
-
+    //check 
     update() {
         this.isWinner()?this.actionFinal():false;
     }
@@ -105,33 +105,51 @@ class Player extends Character {
             default:
                 break;
         }
+        this.steps++;
+
     }
 
+    //check if the player's the winner
     isWinner() {
         return this.y<=0;
     }
 
+    //call success message and reset game
     actionFinal() {
-        super.render(this.star,200,200);
+        this.success("Good Job!",`You won using ${this.steps} steps`,'icon');
         this.reset();
     }
 
+    //generate a alert message using Sweet Alert
+    generateAlertMessage(title,message,icon) {
+        swal({
+          title: title,
+          text: message,
+          icon: icon,
+        });
+    }
+
+    //move player to left
     moveLeft() {
         this.x>0?this.x-=101:false;
     }
 
+    //move player to right
     moveRight() {
         this.x<303?this.x+=101:false;
     }   
 
+    //move player to top
     moveUp() {
         this.y>0?this.y-=83:false;
     }
 
+    //move player to bottom
     moveDown() {
         this.y<332?this.y+=83:false;
     }
 
+    //random choice of sprite characters
     chooseCharacter() {
         return Math.floor(Math.random()*(4+1))
     }
