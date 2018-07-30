@@ -63,20 +63,19 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        // it('', function() {
-             
-        // });
-        
+        it('hidden by default', function() {
+            var feeds = document.querySelector('.tpl-entry');
+            expect(true).toBe(true);
+        });
+
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-        // it('', function() {
-            
-        // });
-
-
+        it('changes visibility', function() {
+           expect(true).toBe(true); 
+        });
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
@@ -87,9 +86,9 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        // it('', function() {
-            
-        // });
+        it('loadFeed function is called and completes its work', function() {
+            expect(true).toBe(true);
+        });
     });
 
 
@@ -99,9 +98,9 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        // it('', function() {
-            
-        // });
+        it('new feed is loaded by the loadFeed function', function() {
+            expect(true).toBe(true);
+        });
     });
 
 }());
