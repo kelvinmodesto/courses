@@ -88,10 +88,6 @@ function init() {
  */
 google.setOnLoadCallback(init);
 
-function isHidden() {
-    return $('body').hasClass('menu-hidden');
-}
-
 /* All of this functionality is heavily reliant upon the DOM, so we
  * place our code in the $() function to ensure it doesn't execute
  * until the DOM is ready.

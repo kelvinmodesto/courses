@@ -10,9 +10,7 @@
  */
 $(function() {
 
-    beforeEach( function() {
-        
-    });
+    
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
@@ -58,7 +56,10 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
-        var btn = $('.menu-icon-link');
+        var btnMenuLink = $('.menu-icon-link');
+        var isHidden = function() {
+            return $('body').hasClass('menu-hidden');
+        }
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
@@ -74,15 +75,20 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it('changes visibility', function() {
-           btn.trigger('click');
+           btnMenuLink.trigger('click');
            expect(isHidden()).toBe(false);
-           btn.trigger('click');
+           btnMenuLink.trigger('click');
            expect(isHidden()).toBe(true);
         });
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
+        beforeEach(function (done) {
+          loadFeed(0,function(){
+            done();
+          });  
+        });
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -90,7 +96,9 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         it('loadFeed function is called and completes its work', function() {
-            expect(true).toBe(true);
+            console.log($('.feed'));
+            expect($('.feed').first().hasClass('.entry-link')).toBe(true);
+            done();
         });
     });
 
