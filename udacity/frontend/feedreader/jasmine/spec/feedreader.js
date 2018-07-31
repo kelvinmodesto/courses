@@ -36,7 +36,7 @@ $(function() {
          * and that the URL is not empty.
          */
         it('URL is not empty', function() {
-            allFeeds.forEach((feed)=> {
+            allFeeds.forEach(function(feed) {
                expect(feed.url).toBeDefined();
                expect(feed.url.length).not.toBe(0);
              });
@@ -58,14 +58,14 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
-
+        var btn = $('.menu-icon-link');
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
         it('hidden by default', function() {
-            expect(isHiddenByDefault()).toBe(true);
+            expect(isHidden()).toBe(true);
         });
 
          /* TODO: Write a test that ensures the menu changes
@@ -74,7 +74,10 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it('changes visibility', function() {
-           expect(true).toBe(true); 
+           btn.trigger('click');
+           expect(isHidden()).toBe(false);
+           btn.trigger('click');
+           expect(isHidden()).toBe(true);
         });
     });
 
