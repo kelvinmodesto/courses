@@ -82,13 +82,12 @@ $(function() {
 
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
-        var feedLen = 0;
-        allFeeds.forEach(function(element, index) {
-            beforeEach(function(done) {
-                loadFeed(index, done);
-                feedLen += $('.feed').children('.entry-link').children('.entry').length;
-            });
-            
+        var feed,hasEntry;
+        beforeEach(function(done) {
+            loadFeed(1, done);
+            feed = $('.feed').children('.entry-link').html();
+            hasEntry = feed>0;
+
         });
 
         /* TODO: Write a test that ensures when the loadFeed
@@ -98,7 +97,7 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         it('loadFeed function is called and completes its work', function(done) {
-            expect(feedLen).toBeGreaterThan(0);
+            expect(hasEntry).toBe(true);
             done();
         });
 
@@ -106,17 +105,14 @@ $(function() {
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-        var rssLenBefore = 0,
-            rssLenAfter = 0,
-            isLoaded = true;
+        var rssBefore,rssBeforeError,rssAfterError, rssAfter;
 
-        allFeeds.forEach(function(element, index) {
-            beforeEach(function(done) {
-                loadFeed(index, done);
-                rssLenAfter += $('.feed').children('.entry-link').children('.entry').length;
-                isLoaded = isLoaded && (rssLenAfter > rssLenBefore);
-                rssLenBefore = rssLenAfter;
+        beforeEach(function(done) {
+            loadFeed(0,function() {
+                rssBefore=$('.feed');
             });
+            loadFeed(1, done);
+            rssAfter = $('.feed');
         });
 
         /* TODO: Write a test that ensures when a new feed is loaded
@@ -124,7 +120,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
         it('new feed is loaded by the loadFeed function', function(done) {
-            expect(isLoaded).toBe(true);
+            expect(rssAfter === rssBefore).not.toBe(true);
             done();
         });
 
