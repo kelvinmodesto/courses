@@ -84,9 +84,11 @@ $(function() {
     describe('Initial Entries', function() {
         var feed,hasEntry;
         beforeEach(function(done) {
-            loadFeed(1, done);
-            feed = $('.feed').children('.entry-link').html();
+            loadFeed(1, function() {
+            feed = $('.feed').children('.entry-link').children('.entry').length;
             hasEntry = feed>0;
+            done();
+            });
 
         });
 
