@@ -10,11 +10,11 @@
  */
 $(function() {
 
-    
+
     /* This is our first test suite - a test suite just contains
-    * a related set of tests. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
+     * a related set of tests. This suite is all about the RSS
+     * feeds definitions, the allFeeds variable in our application.
+     */
     describe('RSS Feeds', function() {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
@@ -28,27 +28,25 @@ $(function() {
             expect(allFeeds.length).toBeGreaterThan(0);
         });
 
-
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
         it('URL is not empty', function() {
             allFeeds.forEach(function(feed) {
-               expect(feed.url).toBeDefined();
-               expect(feed.url.length).toBeGreaterThan(0);
-             });
+                expect(feed.url).toBeDefined();
+                expect(feed.url.length).toBeGreaterThan(0);
+            });
         });
-
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
         it('name is not empty', function() {
-            allFeeds.forEach( function(feed) {
-               expect(feed.name).toBeDefined();
-               expect(feed.name.length).toBeGreaterThan(0);
+            allFeeds.forEach(function(feed) {
+                expect(feed.name).toBeDefined();
+                expect(feed.name.length).toBeGreaterThan(0);
             });
         });
     });
@@ -69,26 +67,28 @@ $(function() {
             expect(isHidden()).toBe(true);
         });
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+        /* TODO: Write a test that ensures the menu changes
+         * visibility when the menu icon is clicked. This test
+         * should have two expectations: does the menu display when
+         * clicked and does it hide when clicked again.
+         */
         it('changes visibility', function() {
-           btnMenuLink.trigger('click');
-           expect(isHidden()).toBe(false);
-           btnMenuLink.trigger('click');
-           expect(isHidden()).toBe(true);
+            btnMenuLink.trigger('click');
+            expect(isHidden()).toBe(false);
+            btnMenuLink.trigger('click');
+            expect(isHidden()).toBe(true);
         });
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
-        
-        beforeEach( function(done) { 
-            allFeeds.forEach(function(element,index) {
-                loadFeed(index,done);
+        var feedLen = 0;
+        allFeeds.forEach(function(element, index) {
+            beforeEach(function(done) {
+                loadFeed(index, done);
+                feedLen += $('.feed').children('.entry-link').children('.entry').length;
             });
+            
         });
 
         /* TODO: Write a test that ensures when the loadFeed
@@ -98,28 +98,36 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         it('loadFeed function is called and completes its work', function(done) {
-            expect($('.feed').children('.entry-link').children('.entry').length).toBeGreaterThan(0);
+            expect(feedLen).toBeGreaterThan(0);
             done();
         });
-    });
 
+    });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-        beforeEach( function(done) { 
-            allFeeds.forEach(function(element,index) {
-                loadFeed(index,done);
+        var rssLenBefore = 0,
+            rssLenAfter = 0,
+            isLoaded = true;
+
+        allFeeds.forEach(function(element, index) {
+            beforeEach(function(done) {
+                loadFeed(index, done);
+                rssLenAfter += $('.feed').children('.entry-link').children('.entry').length;
+                isLoaded = isLoaded && (rssLenAfter > rssLenBefore);
+                rssLenBefore = rssLenAfter;
             });
-        });        
+        });
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
         it('new feed is loaded by the loadFeed function', function(done) {
-            expect($('')).toBe(true);
+            expect(isLoaded).toBe(true);
             done();
         });
+
     });
 
 }());
