@@ -55,6 +55,8 @@ $(function() {
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
         var btnMenuLink = $('.menu-icon-link');
+
+        //Check if body element has menu-hidden class
         var isHidden = function() {
             return $('body').hasClass('menu-hidden');
         }
@@ -83,9 +85,12 @@ $(function() {
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
         var feed,hasEntry;
+
+        // Calling loadFeed and check if it length is higher than 0
         beforeEach(function(done) {
             loadFeed(1, function() {
             feed = $('.feed').children('.entry-link').children('.entry').length;
+            console.log(feed);
             hasEntry = feed>0;
             done();
             });
@@ -107,8 +112,10 @@ $(function() {
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-        var rssBefore,rssBeforeError,rssAfterError, rssAfter;
+        var rssBefore, rssAfter;
 
+
+        // Calling loadFeed with two differents index and compare it
         beforeEach(function(done) {
             loadFeed(0,function() {
                 rssBefore=$('.feed');
