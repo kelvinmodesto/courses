@@ -2,17 +2,16 @@
 // This is the spec file that Jasmine will read and contains
 // all of the tests that will be run against your application.
 
-
 // We're placing all of our tests within the $() function,
 // since some of these tests may require DOM elements. We want
 // to ensure they don't run until the DOM is ready.
 $(function() {
-   
+
     // This is our first test suite - a test suite just contains
     // a related set of tests. This suite is all about the RSS
     // feeds definitions, the allFeeds variable in our application.
     describe('RSS Feeds', function() {
-        
+
         // This is our first test - it tests to make sure that the
         // allFeeds variable has been defined and that it is not
         // empty. Experiment with this before you get started on
@@ -69,22 +68,19 @@ $(function() {
 
     // Test suite named "Initial Entries" 
     describe('Initial Entries', function() {
-        var feed,hasEntry,index=1;
+        var feed, hasEntry;
 
         // Calling loadFeed and check if it length is higher than 0
         beforeEach(function(done) {
-            loadFeed(index, function() {
-            feed = $('.feed .entry').length;
-            hasEntry = feed>0;
-            done();
-            });
-
+            loadFeed(1, done);
         });
 
         // Write a test that ensures when the loadFeed
         // function is called and completes its work, there is at least
         // a single .entry element within the .feed container.
-        it('loadFeed function is called and completes its work', function(done) {
+        it('loadFeed function is called and completes its work', function() {
+            feed = $('.feed .entry').length;
+            hasEntry = feed > 0;
             expect(hasEntry).toBe(true);
         });
 
@@ -92,22 +88,24 @@ $(function() {
 
     // Test suite named "New Feed Selection"
     describe('New Feed Selection', function() {
-        var rssBefore,rssAfter,indexAfter=2;
-
+        var rssBefore, rssAfter;
 
         // Calling loadFeed with two differents index and compare it
-        beforeEach( function(done) {
-            rssBefore=$('.feed').html();
-            loadFeed(indexAfter, function() {
-                rssAfter = $('.feed').html();
-                done();
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                rssBefore = $('.feed');
+                loadFeed(1, function() {
+                    rssAfter = $('.feed');
+                    done();
+                });
             });
         });
 
         // Ensures when a new feed is loaded
         // by the loadFeed function that the content actually changes.
-        it('new feed is loaded by the loadFeed function', function(done) {
-            expect(rssAfter == rssBefore).not.toBe(true);
+        it('new feed is loaded by the loadFeed function', function() {
+            console.log(rssBefore.html() == rssAfter.html());
+            expect(rssAfter.html() === rssBefore.html()).not.toBe(true);
         });
 
     });
