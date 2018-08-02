@@ -49,7 +49,7 @@ Review the Feed Reader Testing [Project Rubric](https://review.udacity.com/#!/pr
 
 ## Getting Started 
 
-Access [Play](https://github.com/kelvinmodesto/courses/blob/master/udacity/frontend/feedreader/index.html)
+Access [Index](https://github.com/kelvinmodesto/courses/blob/master/udacity/frontend/feedreader/index.html)
 
 ### Prerequisites
 
