@@ -9,7 +9,7 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
-
+    var ALL_FEEDS_LEN = allFeeds.length-1;
 
     /* This is our first test suite - a test suite just contains
      * a related set of tests. This suite is all about the RSS
@@ -84,13 +84,12 @@ $(function() {
 
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
-        var feed,hasEntry;
+        var feed,hasEntry,index=1;
 
         // Calling loadFeed and check if it length is higher than 0
         beforeEach(function(done) {
-            loadFeed(1, function() {
+            loadFeed(index, function() {
             feed = $('.feed').children('.entry-link').children('.entry').length;
-            console.log(feed);
             hasEntry = feed>0;
             done();
             });
@@ -112,16 +111,16 @@ $(function() {
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-        var rssBefore, rssAfter;
+        var rssBefore,rssAfter,indexAfter=2;
 
 
         // Calling loadFeed with two differents index and compare it
-        beforeEach(function(done) {
-            loadFeed(0,function() {
-                rssBefore=$('.feed');
+        beforeEach( function(done) {
+            rssBefore=$('.feed').html();
+            loadFeed(indexAfter, function() {
+                rssAfter = $('.feed').html();
+                done();
             });
-            loadFeed(1, done);
-            rssAfter = $('.feed');
         });
 
         /* TODO: Write a test that ensures when a new feed is loaded
@@ -129,7 +128,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
         it('new feed is loaded by the loadFeed function', function(done) {
-            expect(rssAfter === rssBefore).not.toBe(true);
+            expect(rssAfter == rssBefore).not.toBe(true);
             done();
         });
 
