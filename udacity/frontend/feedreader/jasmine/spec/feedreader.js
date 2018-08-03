@@ -93,9 +93,9 @@ $(function() {
         // Calling loadFeed with two differents index and compare it
         beforeEach(function(done) {
             loadFeed(0, function() {
-                rssBefore = $('.feed');
+                rssBefore = $('.feed').html();
                 loadFeed(1, function() {
-                    rssAfter = $('.feed');
+                    rssAfter = $('.feed').html();
                     done();
                 });
             });
@@ -104,8 +104,7 @@ $(function() {
         // Ensures when a new feed is loaded
         // by the loadFeed function that the content actually changes.
         it('new feed is loaded by the loadFeed function', function() {
-            console.log(rssBefore.html() == rssAfter.html());
-            expect(rssAfter.html() === rssBefore.html()).not.toBe(true);
+            expect(rssAfter === rssBefore).not.toBe(true);
         });
 
     });
