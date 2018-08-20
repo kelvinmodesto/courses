@@ -6,6 +6,5 @@ self.addEventListener('fetch', function(event) {
   		new Response("<h1 class='a-winner-is-me'>Winner</h1>", {
   			headers:{'Content-Type':'text/html'}
   		} )
-  			
   	);
 });
