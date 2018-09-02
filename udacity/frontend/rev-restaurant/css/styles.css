@@ -35,6 +35,12 @@ h1, h2, h3, h4, h5, h6 {
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 #maincontent {
   background-color: #f3f3f3;
   min-height: 100%;
@@ -145,7 +151,7 @@ nav h1 a {
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
-  width: 270px;
+  width: 50%;
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
