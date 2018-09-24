@@ -37,7 +37,21 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 
 .container {
-  min-width: 992px !important;
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+}
+
+@media only screen and (min-width: 601px) {
+  .container {
+    width: 85%;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 70%;
+  }
 }
 
 .row {
@@ -212,12 +226,12 @@ nav h1 a {
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
-  -webkit-border-top-left-radius: 20px;
-  -webkit-border-bottom-right-radius: 20px;
-  -moz-border-radius-topleft: 20px;
-  -moz-border-radius-bottomright: 20px;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  -webkit-border-top-left-radius: 40px;
+  -webkit-border-bottom-right-radius: 40px;
+  -moz-border-radius-topleft: 40px;
+  -moz-border-radius-bottomright: 40px;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
 
   }
 #restaurants-list .restaurant-img {
