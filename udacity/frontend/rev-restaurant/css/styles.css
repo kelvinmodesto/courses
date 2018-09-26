@@ -41,13 +41,12 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 
 .container {
   width: 100%;
-  max-width: 1280px;
 }
 
 .row:before, 
 .row:after {
   content:"";
-  display: table ;
+  display: flex;
   clear:both;
 }
 
@@ -55,9 +54,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   float: left; 
   min-height: 1px; 
   width: 16.66%; 
-  /*-- our gutter -- */
-  padding: 12px; 
-  background-color: #FFDCDC;
+  padding: 10px; 
 }
 
 .col-1{
@@ -80,12 +77,12 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 
 @media all and (max-width:800px){
-  .col-1{ width: 33.33%;  }
-  .col-2{ width: 50%;     }
-  .col-3{ width: 83.33%;  }
-  .col-4{ width: 100%;    }
-  .col-5{ width: 100%;    }
-  .col-6{ width: 100%;    }
+  .col-1{ width: 33.33%; }
+  .col-2{ width: 50%; }
+  .col-3{ width: 83.33%; }
+  .col-4{ width: 100%; }
+  .col-5{ width: 100%; }
+  .col-6{ width: 100%; }
 
   .row .col-2:last-of-type{
       width: 100%; 
@@ -201,6 +198,7 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Listing ====================== */
+
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
@@ -211,9 +209,8 @@ nav h1 a {
 #restaurants-list li {
   background-color: #fff;
   font-family: Arial,sans-serif;
-  margin: 15px 10px;
-  min-height: 380px;
-  padding: 0 30px 25px;
+  /* margin: 15px 0px; */
+  /* padding: 0 30px 25px; */
   text-align: left;
   -webkit-border-top-left-radius: 30px;
   -webkit-border-bottom-right-radius: 30px;
@@ -224,7 +221,7 @@ nav h1 a {
 }
 
 #restaurants-list .restaurant-img {
-  display: block;
+  display: flex;
   max-width: 100%;
   min-width: 100%;
   border-radius: 10px;
@@ -232,8 +229,12 @@ nav h1 a {
 
 #restaurants-list .restaurant-title {
   text-align: center;
-  font-size: 2.0rem;
+  font-size: 1.2rem;
   padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
 
 #restaurants-list .restaurant-text {
