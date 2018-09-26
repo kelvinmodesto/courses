@@ -158,6 +158,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
+  li.className = 'col-2';
 
   const name = document.createElement('h1');
   name.className = 'restaurant-title';
@@ -170,7 +171,6 @@ createRestaurantHTML = (restaurant) => {
   li.append(image);
 
   const div = document.createElement('div');
-  
   div.className = 'restaurant-text';
 
   const neighborhood = document.createElement('p');
@@ -190,7 +190,7 @@ createRestaurantHTML = (restaurant) => {
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
 
-  return li
+  return li;
 }
 
 /**
