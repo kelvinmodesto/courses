@@ -40,21 +40,22 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 
 .container {
-  width: 100%;
+  margin: 0 auto;
+  /* max-width: 1280px; */
+  width: 90%;
 }
 
 .row:before, 
 .row:after {
   content:"";
-  display: flex;
+  display: table;
   clear:both;
 }
 
 [class*='col-'] {
   float: left; 
-  min-height: 1px; 
   width: 16.66%; 
-  padding: 10px; 
+  padding: 10px;
 }
 
 .col-1{
@@ -76,7 +77,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   width: 100%;
 }
 
-@media all and (max-width:800px){
+@media only screen and (max-width:800px){
   .col-1{ width: 33.33%; }
   .col-2{ width: 50%; }
   .col-3{ width: 83.33%; }
@@ -87,19 +88,23 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   .row .col-2:last-of-type{
       width: 100%; 
   }
-
   .row .col-5 ~ .col-1{
       width: 100%; 
   }
+  .container {
+    width: 70%;
+  }
 }
 
-@media all and (max-width:650px){
+@media only screen and (max-width:601px){
   .col-1{ width: 50%;     }
   .col-2{ width: 100%;    }
   .col-3{ width: 100%;    }
   .col-4{ width: 100%;    }
   .col-5{ width: 100%;    }
   .col-6{ width: 100%;    }
+
+  
 }
 
 #maincontent {
@@ -209,7 +214,7 @@ nav h1 a {
 #restaurants-list li {
   background-color: #fff;
   font-family: Arial,sans-serif;
-  /* margin: 15px 0px; */
+  margin: 15px 5px;
   /* padding: 0 30px 25px; */
   text-align: left;
   -webkit-border-top-left-radius: 30px;
@@ -248,7 +253,6 @@ nav h1 a {
   font-weight: 200;
   letter-spacing: 0;
   line-height: 1.3;
-  margin: 20px 0 10px;
   text-transform: uppercase;
 }
 #restaurants-list p {
