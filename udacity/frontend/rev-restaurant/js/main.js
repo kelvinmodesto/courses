@@ -158,7 +158,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
-  li.className = 'col-2';
+  li.className = 'item';
 
   const name = document.createElement('h1');
   name.className = 'restaurant-title';

@@ -42,69 +42,34 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 .container {
   margin: 0 auto;
   /* max-width: 1280px; */
-  width: 90%;
-}
-
-.row:before, 
-.row:after {
-  content:"";
-  display: table;
-  clear:both;
-}
-
-[class*='col-'] {
-  float: left; 
-  width: 16.66%; 
-  padding: 10px;
-}
-
-.col-1{
-  width: 16.66%; 
-}
-.col-2{
-  width: 33.33%; 
-}
-.col-3{
-  width: 50%; 
-}
-.col-4{
-  width: 66.664%;
-}
-.col-5{
-  width: 83.33%;
-}
-.col-6{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+@media only screen and (min-width:1440px){
+  .item{
+    width: 25%;
+  }
+}
+
+@media only screen and (min-width:801px) and (max-width: 1439px){
+  .item{
+    width: 33.3%;
+  }
 }
 
 @media only screen and (max-width:800px){
-  .col-1{ width: 33.33%; }
-  .col-2{ width: 50%; }
-  .col-3{ width: 83.33%; }
-  .col-4{ width: 100%; }
-  .col-5{ width: 100%; }
-  .col-6{ width: 100%; }
-
-  .row .col-2:last-of-type{
-      width: 100%; 
-  }
-  .row .col-5 ~ .col-1{
-      width: 100%; 
-  }
-  .container {
-    width: 70%;
+  .item{
+    width: 50%;
   }
 }
 
 @media only screen and (max-width:601px){
-  .col-1{ width: 50%;     }
-  .col-2{ width: 100%;    }
-  .col-3{ width: 100%;    }
-  .col-4{ width: 100%;    }
-  .col-5{ width: 100%;    }
-  .col-6{ width: 100%;    }
-
-  
+  .item{
+    width: 100%;
+  }
 }
 
 #maincontent {
@@ -207,7 +172,7 @@ nav h1 a {
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
-  margin: 0;
+  /* margin: 0; */
   padding: 30px 15px 60px;
   text-align: center;
 }
@@ -215,7 +180,7 @@ nav h1 a {
   background-color: #fff;
   font-family: Arial,sans-serif;
   margin: 15px 5px;
-  /* padding: 0 30px 25px; */
+  padding: 0 30px 25px;
   text-align: left;
   -webkit-border-top-left-radius: 30px;
   -webkit-border-bottom-right-radius: 30px;
@@ -223,12 +188,13 @@ nav h1 a {
   -moz-border-radius-bottomright: 30px;
   border-top-left-radius: 30px;
   border-bottom-right-radius: 30px;
+  height: 100%;
 }
 
 #restaurants-list .restaurant-img {
   display: flex;
-  max-width: 100%;
-  min-width: 100%;
+  width: 90%;
+  margin: 5%;
   border-radius: 10px;
 }
 
