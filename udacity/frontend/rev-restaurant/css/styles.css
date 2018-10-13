@@ -42,7 +42,6 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 .container {
   margin: 0 auto;
   width: 100%;
-  justify-content: center;
   align-items: baseline;
   display: flex;
   display: -webkit-box;
@@ -54,28 +53,28 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 
 .item{
-  order: 1;
   flex-direction: row;
 }
+
 @media only screen and (min-width:1440px){
   .item{
-    width: 25%;
+    width: 24%;
   }
 }
 
-@media only screen and (min-width:801px) and (max-width: 1439px){
+@media only screen and (min-width:994px) and (max-width: 1439px){
   .item{
-    width: 33.3%;
+    width: 32.5%;
+  }
+}
+
+@media only screen and (min-width:801px) and (max-width:993px){
+  .item{
+    width: 49%;
   }
 }
 
 @media only screen and (max-width:800px){
-  .item{
-    width: 50%;
-  }
-}
-
-@media only screen and (max-width:601px){
   .item{
     width: 100%;
   }
@@ -181,7 +180,6 @@ nav h1 a {
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
-  /* margin: 0; */
   padding: 30px 15px 60px;
   text-align: center;
 }
@@ -201,7 +199,6 @@ nav h1 a {
 }
 
 #restaurants-list .restaurant-img {
-  display: flex;
   width: 90%;
   margin: 5%;
   border-radius: 10px;
@@ -211,10 +208,6 @@ nav h1 a {
   text-align: center;
   font-size: 1.2rem;
   padding-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
 }
 
 #restaurants-list .restaurant-text {
