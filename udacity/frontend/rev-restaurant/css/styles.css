@@ -42,6 +42,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 .container {
   margin: 0 auto;
   width: 100%;
+  margin-left: auto; */
   align-items: baseline;
   display: flex;
   display: -webkit-box;
@@ -50,35 +51,31 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   display: -moz-flex;
   display: -webkit-flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .item{
-  flex-direction: row;
+  max-width: 100%;
+  margin: 5px;
 }
 
-@media only screen and (min-width:1440px){
+@media only screen and (min-width:801px){
   .item{
-    width: 24%;
+    max-width: 80%;
   }
 }
 
-@media only screen and (min-width:994px) and (max-width: 1439px){
+@media only screen and (min-width:994px){
   .item{
-    width: 32.5%;
+    max-width: 60%;
   }
 }
 
-@media only screen and (min-width:801px) and (max-width:993px){
+/* @media only screen and (min-width:1440px){
   .item{
-    width: 49%;
+    width: 60%;
   }
-}
-
-@media only screen and (max-width:800px){
-  .item{
-    width: 100%;
-  }
-}
+} */
 
 #maincontent {
   background-color: #f3f3f3;
@@ -186,8 +183,8 @@ nav h1 a {
 #restaurants-list li {
   background-color: #fff;
   font-family: Arial,sans-serif;
-  margin: 15px 5px;
-  padding: 0 30px 25px;
+  /* margin: 15px 5px;
+  padding: 0 30px 25px; */
   text-align: left;
   -webkit-border-top-left-radius: 30px;
   -webkit-border-bottom-right-radius: 30px;
