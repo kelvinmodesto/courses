@@ -169,10 +169,20 @@ createRestaurantHTML = (restaurant) => {
   name.innerHTML = restaurant.name;
   li.append(name);
 
+  const link = document.createElement('a');
+  link.href = DBHelper.urlForRestaurant(restaurant);
+
+  
+  const alt = document.createAttribute('alt');
+  alt.value = restaurant.name;
+
   const image = document.createElement('img');
   image.className = 'restaurant-img';
+  image.setAttributeNode(alt);
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  li.append(image);
+
+  link.append(image);
+  li.append(link);
 
   const div = document.createElement('div');
   div.className = 'restaurant-text';
