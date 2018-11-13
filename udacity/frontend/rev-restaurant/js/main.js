@@ -1,9 +1,9 @@
-let restaurants,
+var restaurants,
   neighborhoods,
-  cuisines
-var newMap
+  cuisines;
+var newMap;
 var markers = [];
-const MAPBOX_TOKEN = 'pk.eyJ1Ijoia2VsdmlubW9kZXN0byIsImEiOiJjamw0ZXNnZXcwaXkzM3Bwa3c4a2YwMzB0In0.x6ZHgnZ8lpmevBO52ibvjQ';
+var MAPBOX_TOKEN = 'pk.eyJ1Ijoia2VsdmlubW9kZXN0byIsImEiOiJjamw0ZXNnZXcwaXkzM3Bwa3c4a2YwMzB0In0.x6ZHgnZ8lpmevBO52ibvjQ';
 
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
