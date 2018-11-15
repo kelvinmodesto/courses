@@ -106,12 +106,12 @@ nav h1 a {
     background-color: #eee;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 80px);
 }
 
 /* Display list items side by side */
 #breadcrumb li {
     display: inline;
+    font-size: 15pt;
 }
 
 /* Add a slash symbol (/) before/behind each list item */
@@ -285,6 +285,7 @@ nav h1 a {
     position: fixed;
     right: 0;
     top: 80px;
+    display:flex;
     width: 50%;
 }
 
