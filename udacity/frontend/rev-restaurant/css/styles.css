@@ -285,7 +285,7 @@ nav h1 a {
     position: fixed;
     right: 0;
     top: 80px;
-    display:flex;
+    display: flex;
     width: 50%;
 }
 
