@@ -13,6 +13,8 @@
 }
 
 .item {
-  max-width: 100%;
+  @include responsive-item(handhelds) { max-width: 100%; }
+  @include responsive-item(medium-screens) { max-width: 80%; }
+  @include responsive-item(wide-screens) { max-width: 60%; }
   margin: 10px;
 }

@@ -1,1 +1,11 @@
 .idea/
+
+*.map
+*/.sass-cache
+
+udacity/frontend/rev-restaurant/.sass-cache/
+udacity/frontend/rev-restaurant/compressed
+*.css.map
+*.sass.map
+*.scss.map
+

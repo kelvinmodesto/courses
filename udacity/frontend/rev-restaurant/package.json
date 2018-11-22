@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "css": "sass assets/scss/styles.scss css/styles.css",
-    "css-watch": "sass --watch assets/scss/styles.scss:css/styles.css",
+    "css": "sass assets/scss/styles.scss css/styles.css --style compressed",
+    "css-watch": "sass --watch assets/scss/styles.scss:assets/css/styles.css --style compressed",
     "http": "http-server -p 8080",
     "http:py": "python -m http.server 8080"
   },

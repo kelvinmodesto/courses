@@ -1,0 +1,18 @@
+#reviews-list {
+  li {
+    background-color: #fff;
+    border: 2px solid #f3f3f3;
+    display: block;
+    list-style-type: none;
+    margin: 0 0 30px;
+    overflow: hidden;
+    padding: 0 20px 20px;
+    position: relative;
+    width: 85%;
+
+    p {
+      margin: 0 0 10px;
+    }
+
+  }
+}

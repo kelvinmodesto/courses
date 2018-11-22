@@ -20,15 +20,16 @@ ul, li {
 a {
   color: orange;
   text-decoration: none;
-}
 
-a:hover, a:focus {
-  color: #3397db;
-  text-decoration: none;
-}
+  &:hover,&:focus {
+    color: #3397db;
+    text-decoration: none;
+  }
 
-a img {
-  border: none 0 #fff;
+  img {
+    border: none 0 #fff;
+  }
+
 }
 
 h1, h2, h3, h4, h5, h6 {

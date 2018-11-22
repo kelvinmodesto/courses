@@ -4,11 +4,11 @@
     display: inline;
     font-size: 15pt;
     a {
-      color: #0275d8;
+      color: $color-breadcrumb;
       text-decoration: none;
       /* Add a color on mouse-over */
       &:hover {
-        color: #01447e;
+        color: $color-breadcrumb-hover;
         text-decoration: underline;
       }
     }
