@@ -1,0 +1,24 @@
+#breadcrumb {
+  /* Add a slash symbol (/) before/behind each list item */
+  li {
+    display: inline;
+    font-size: 15pt;
+    a {
+      color: #0275d8;
+      text-decoration: none;
+      /* Add a color on mouse-over */
+      &:hover {
+        color: #01447e;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  /* Add a color to all links inside the list */
+  li + li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+  }
+
+}
