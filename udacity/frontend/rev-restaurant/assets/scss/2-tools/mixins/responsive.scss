@@ -9,3 +9,7 @@
     @media only screen and (min-width: $break-large) { @content; }
   }
 }
+
+@mixin responsive-review($media) {
+
+}

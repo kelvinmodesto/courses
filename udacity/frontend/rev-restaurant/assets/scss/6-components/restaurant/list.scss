@@ -29,7 +29,7 @@
   }
 
   li {
-    h1 {
+    >h1 {
       color: $color-restaurant-title;
       font-family: Arial, sans-serif;
       font-weight: 200;
@@ -38,7 +38,7 @@
       text-transform: uppercase;
     }
 
-    a {
+    >a {
       color: $color-link;
       display: inline-block;
       font-size: 10pt;
@@ -48,7 +48,7 @@
       text-transform: uppercase;
     }
 
-    .restaurants-details {
+    >.restaurants-details {
       background-color: blue;
       margin-top: 10px;
     }

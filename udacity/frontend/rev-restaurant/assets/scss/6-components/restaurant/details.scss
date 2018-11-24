@@ -1,9 +1,6 @@
 .inside {
-  header {
-    position: fixed;
-    top: 0;
+  >header {
     width: 100%;
-    z-index: 1000;
   }
 
   #map-container {
@@ -11,8 +8,7 @@
     height: 100%;
     position: fixed;
     right: 0;
-    top: $position-map-container;
-    display: flex;
+    //top: $position-map-container;
     width: 50%;
   }
 
@@ -21,7 +17,7 @@
     width: 100%;
   }
 
-  #footer {
+  >#footer {
     bottom: 0;
     position: absolute;
     width: 100%;

@@ -1,5 +1,5 @@
 #reviews-list {
-  li {
+  >li {
     background-color: #fff;
     border: 2px solid #f3f3f3;
     display: block;
@@ -10,9 +10,9 @@
     position: relative;
     width: 85%;
 
-    p {
+  p {
       margin: 0 0 10px;
-    }
+  }
 
   }
 }

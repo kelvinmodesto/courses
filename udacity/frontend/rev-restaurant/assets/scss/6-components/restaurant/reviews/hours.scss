@@ -1,5 +1,7 @@
 #restaurant-hours {
-  td {
-    color: $color-restaurant-text;
+  >tr {
+    >td {
+      color: $color-restaurant-text;
+    }
   }
 }
