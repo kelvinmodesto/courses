@@ -37,6 +37,7 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
         const option = document.createElement('option');
         option.innerHTML = neighborhood;
         option.value = neighborhood;
+        option.setAttribute("role","option");
         select.append(option);
     });
 };
@@ -111,6 +112,9 @@ updateRestaurants = () => {
 
     const cIndex = cSelect.selectedIndex;
     const nIndex = nSelect.selectedIndex;
+
+    cSelect[cIndex].setAttribute("aria-selected",true);
+    nSelect[nIndex].setAttribute("aria-selected",true);
 
     const cuisine = cSelect[cIndex].value;
     const neighborhood = nSelect[nIndex].value;
