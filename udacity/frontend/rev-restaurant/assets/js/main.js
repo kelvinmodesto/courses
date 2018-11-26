@@ -37,7 +37,7 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
         const option = document.createElement('option');
         option.innerHTML = neighborhood;
         option.value = neighborhood;
-        option.setAttribute("role","option");
+        option.setAttribute("role", "option");
         select.append(option);
     });
 };
@@ -82,9 +82,9 @@ initMap = () => {
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
         mapboxToken: MAPBOX_TOKEN,
         maxZoom: 18,
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/" tabindex="-1">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/" tabindex="-1">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/" tabindex="-1">Mapbox</a>',
         id: 'mapbox.streets'
     }).addTo(newMap);
 
@@ -105,6 +105,7 @@ initMap = () => {
 
 /**
  * Update page and map for current restaurants.
+ * TODO: put aria-selected attribute true and false on update filters for cuisines and neighborhoods
  */
 updateRestaurants = () => {
     const cSelect = document.getElementById('cuisines-select');
@@ -113,8 +114,15 @@ updateRestaurants = () => {
     const cIndex = cSelect.selectedIndex;
     const nIndex = nSelect.selectedIndex;
 
-    cSelect[cIndex].setAttribute("aria-selected",true);
-    nSelect[nIndex].setAttribute("aria-selected",true);
+    for (let item of cSelect) {
+        item.selected ?
+            cSelect[cIndex].setAttribute("aria-selected", true) : cSelect[item.index].setAttribute("aria-selected", false);
+    }
+
+    for (let item of nSelect) {
+        item.selected ?
+            nSelect[nIndex].setAttribute("aria-selected", true) : nSelect[item.index].setAttribute("aria-selected", false);
+    }
 
     const cuisine = cSelect[cIndex].value;
     const neighborhood = nSelect[nIndex].value;
@@ -175,6 +183,7 @@ createRestaurantHTML = (restaurant) => {
 
     const link = document.createElement('a');
     link.href = DBHelper.urlForRestaurant(restaurant);
+    link.setAttribute("aria-label",restaurant.name);
 
     const alt = document.createAttribute('alt');
     alt.value = restaurant.name;
