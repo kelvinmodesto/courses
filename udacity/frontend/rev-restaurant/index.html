@@ -19,18 +19,18 @@
     <section id="map-container">
         <div id="map"></div>
     </section>
-    <section>
-        <div class="filter-options">
-            <h2>Filter Results</h2>
-            <select id="neighborhoods-select" name="neighborhoods" tabindex="0" role="listbox" onchange="updateRestaurants()">
-                <option value="all">All Neighborhoods</option>
-            </select>
-            <select id="cuisines-select" name="cuisines" tabindex="0" role="listbox" onchange="updateRestaurants()">
-                <option value="all">All Cuisines</option>
-            </select>
-        </div>
-        <ul id="restaurants-list"></ul>
-    </section>
+    <div class="filter-options">
+        <h2>Filter Results</h2>
+        <select id="neighborhoods-select" name="neighborhoods" role="listbox"
+                onchange="updateRestaurants()">
+            <option value="all">All Neighborhoods</option>
+        </select>
+        <select id="cuisines-select" name="cuisines" role="listbox"
+                onchange="updateRestaurants()">
+            <option value="all">All Cuisines</option>
+        </select>
+    </div>
+    <ul id="restaurants-list"></ul>
 </main>
 <script src="assets/js/leaflet.js"
         integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="

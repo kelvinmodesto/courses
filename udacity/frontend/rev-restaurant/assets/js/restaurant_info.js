@@ -137,6 +137,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
         container.appendChild(noReviews);
         return;
     }
+
     const ul = document.getElementById('reviews-list');
     reviews.forEach(review => {
         ul.appendChild(createReviewHTML(review));
@@ -149,23 +150,34 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
     const li = document.createElement('li');
-
+    const header = document.createElement('header');
     const name = document.createElement('h1');
     const date = document.createElement('span');
 
     date.innerHTML = review.date;
+    date.className = "right";
+
     name.innerHTML = review.name;
 
-    li.appendChild(name);
-    li.appendChild(date);
+    header.appendChild(name);
+    header.appendChild(date);
+
+    li.appendChild(header);
+
+    const container = document.createElement('div');
 
     const rating = document.createElement('p');
     rating.innerHTML = `Rating: ${review.rating}`;
-    li.appendChild(rating);
+    rating.className = "left";
 
     const comments = document.createElement('p');
     comments.innerHTML = review.comments;
-    li.appendChild(comments);
+
+    container.appendChild(rating);
+    container.appendChild(comments);
+    container.className = "container";
+
+    li.appendChild(container);
 
     return li;
 };
