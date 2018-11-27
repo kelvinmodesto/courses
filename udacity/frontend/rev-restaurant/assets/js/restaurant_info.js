@@ -98,6 +98,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     if (restaurant.operating_hours) {
         fillRestaurantHoursHTML();
     }
+
     // fill reviews
     fillReviewsHTML();
 };
@@ -168,7 +169,7 @@ createReviewHTML = (review) => {
 
     const rating = document.createElement('p');
     rating.innerHTML = `Rating: ${review.rating}`;
-    rating.className = "left";
+    rating.className = "review-rating";
 
     const comments = document.createElement('p');
     comments.innerHTML = review.comments;

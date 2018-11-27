@@ -8,10 +8,27 @@
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
     height: 100%;
-     header {
+
+    header {
       display: flex;
       background-color: $bg-footer;
       color: $color-link;
+
+      h1 {
+         margin: 15px;
+      }
+
+      span{
+        margin:25px;
+      }
+    }
+
+    .container {
+      .review-rating {
+        background-color: #f18200;
+        color: white;
+        font-weight: bold;
+      }
     }
 
     background-color: #fff;
