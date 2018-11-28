@@ -25,9 +25,9 @@ initMap = () => {
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
                 mapboxToken: MAPBOX_TOKEN,
                 maxZoom: 18,
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/" tabindex="1">OpenStreetMap</a> contributors, ' +
+                    '<a href="https://creativecommons.org/licenses/by-sa/2.0/" tabindex="1">CC-BY-SA</a>, ' +
+                    'Imagery © <a href="https://www.mapbox.com/" tabindex="1">Mapbox</a>',
                 id: 'mapbox.streets'
             }).addTo(newMap);
             fillBreadcrumb();
@@ -82,9 +82,11 @@ fetchRestaurantFromURL = (callback) => {
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
     const name = document.getElementById('restaurant-name');
+    name.setAttribute("tabindex",1);
     name.innerHTML = restaurant.name;
 
     const address = document.getElementById('restaurant-address');
+    address.setAttribute("tabindex",1);
     address.innerHTML = restaurant.address;
 
     const image = document.getElementById('restaurant-img');
@@ -92,6 +94,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
     const cuisine = document.getElementById('restaurant-cuisine');
+    cuisine.setAttribute("tabindex",1);
     cuisine.innerHTML = restaurant.cuisine_type;
 
     // fill operating hours
@@ -108,6 +111,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
  */
 fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
     const hours = document.getElementById('restaurant-hours');
+    hours.setAttribute("tabindex",1);
+
     for (let key in operatingHours) {
         const row = document.createElement('tr');
 
@@ -154,6 +159,8 @@ createReviewHTML = (review) => {
     const header = document.createElement('header');
     const name = document.createElement('h1');
     const date = document.createElement('span');
+
+    li.setAttribute('tabindex',1);
 
     date.innerHTML = review.date;
     date.className = "right";

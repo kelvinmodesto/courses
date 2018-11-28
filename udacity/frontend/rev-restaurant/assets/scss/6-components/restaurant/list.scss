@@ -48,9 +48,9 @@
       text-transform: uppercase;
     }
 
-    >.restaurants-details {
-      background-color: blue;
-      margin-top: 10px;
+    >.restaurant-details {
+      background-color: $color-restaurant-title;
+      margin-top: 20px;
     }
 
   }
