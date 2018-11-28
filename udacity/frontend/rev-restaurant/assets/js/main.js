@@ -105,7 +105,6 @@ initMap = () => {
 
 /**
  * Update page and map for current restaurants.
- * TODO: put aria-selected attribute true and false on update filters for cuisines and neighborhoods
  */
 updateRestaurants = () => {
     const cSelect = document.getElementById('cuisines-select');
