@@ -196,7 +196,7 @@ createRestaurantHTML = (restaurant) => {
     li.append(link);
 
     const div = document.createElement('div');
-    div.className = 'restaurant-text';
+    div.classList = 'restaurant-text card-content';
 
     const neighborhood = document.createElement('p');
     neighborhood.className = 'restaurant-paragraph';
@@ -212,7 +212,7 @@ createRestaurantHTML = (restaurant) => {
 
     const more = document.createElement('a');
     more.innerHTML = 'View Details';
-    more.className = 'restaurant-details';
+    more.classList = 'restaurant-details card-content';
     more.setAttribute('aria-label','View Details');
     more.href = DBHelper.urlForRestaurant(restaurant);
 

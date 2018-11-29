@@ -19,3 +19,7 @@
   @include responsive-item(wide-screens) { max-width: 70%; }
   margin: 10px;
 }
+
+.card-content {
+  margin:5%;
+}
