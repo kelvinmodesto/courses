@@ -20,8 +20,9 @@
 
   .restaurant-title {
     text-align: center;
-    font-size: 1.2rem;
-    padding-top: 10px;
+    font-size: 1.5rem;
+    padding: 2.5%;
+    font-weight: bold;
   }
 
   .restaurant-text {
@@ -29,7 +30,7 @@
   }
 
   li {
-    >h1 {
+    > h1 {
       color: $color-restaurant-title;
       font-family: Arial, sans-serif;
       font-weight: 200;
@@ -38,7 +39,7 @@
       text-transform: uppercase;
     }
 
-    >a {
+    > a {
       color: $color-link;
       display: inline-block;
       font-size: 10pt;
@@ -47,11 +48,16 @@
       text-transform: uppercase;
     }
 
-    >.restaurant-details {
+    > .restaurant-details {
       background-color: $color-restaurant-title;
       padding: 12px;
       font-weight: bold;
       font-size: 1.25rem;
+
+      &:hover {
+        background-color: white;
+        color: $color-restaurant-title;
+      }
     }
 
   }
