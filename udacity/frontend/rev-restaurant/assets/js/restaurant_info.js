@@ -163,13 +163,10 @@ createReviewHTML = (review) => {
     li.setAttribute('tabindex',1);
 
     date.innerHTML = review.date;
-    date.className = "right";
-
     name.innerHTML = review.name;
 
     header.appendChild(name);
     header.appendChild(date);
-
     li.appendChild(header);
 
     const container = document.createElement('div');
