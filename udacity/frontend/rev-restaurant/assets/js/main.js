@@ -77,7 +77,8 @@ initMap = () => {
     self.newMap = L.map('map', {
         center: [40.722216, -73.987501],
         zoom: 12,
-        scrollWheelZoom: false
+        scrollWheelZoom: false,
+        tabindex:-1
     });
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
         mapboxToken: MAPBOX_TOKEN,
@@ -90,18 +91,6 @@ initMap = () => {
 
     updateRestaurants();
 };
-/* window.initMap = () => {
-  let loc = {
-    lat: 40.722216,
-    lng: -73.987501
-  };
-  self.map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: loc,
-    scrollwheel: false
-  });
-  updateRestaurants();
-} */
 
 /**
  * Update page and map for current restaurants.
@@ -182,7 +171,7 @@ createRestaurantHTML = (restaurant) => {
 
     const link = document.createElement('a');
     link.href = DBHelper.urlForRestaurant(restaurant);
-    link.setAttribute("aria-label",restaurant.name);
+    link.setAttribute("aria-label", restaurant.name);
 
     const alt = document.createAttribute('alt');
     alt.value = restaurant.name;
@@ -213,7 +202,7 @@ createRestaurantHTML = (restaurant) => {
     const more = document.createElement('a');
     more.innerHTML = 'View Details';
     more.classList = 'restaurant-details card-content';
-    more.setAttribute('aria-label','View Details');
+    more.setAttribute('aria-label', 'View Details');
     more.href = DBHelper.urlForRestaurant(restaurant);
 
     li.append(more);
@@ -237,14 +226,3 @@ addMarkersToMap = (restaurants = self.restaurants) => {
         self.markers.push(marker);
     });
 };
-
-/* addMarkersToMap = (restaurants = self.restaurants) => {
-  restaurants.forEach(restaurant => {
-    // Add marker to the map
-    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
-    google.maps.event.addListener(marker, 'click', () => {
-      window.location.href = marker.url
-    });
-    self.markers.push(marker);
-  });
-} */

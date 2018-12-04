@@ -1,13 +1,13 @@
 #reviews-list {
 
-  > li {
+  >li {
     -webkit-border-top-left-radius: 30px;
     -webkit-border-bottom-right-radius: 30px;
     -moz-border-radius-topleft: 30px;
     -moz-border-radius-bottomright: 30px;
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    height: 450px;
+    height: 575px;
     margin-left: 12.5%;
     margin-bottom: 5%;
     width: 75%;
@@ -27,7 +27,7 @@
     }
 
     .container {
-      > .review-rating {
+      >.review-rating {
         background-color: #f18200;
         color: white;
         font-weight: bold;

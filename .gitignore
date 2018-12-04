@@ -5,6 +5,8 @@
 
 udacity/frontend/rev-restaurant/.sass-cache/
 udacity/frontend/rev-restaurant/compressed
+udacity/frontend/myreads/node_modules
+
 *.css.map
 *.sass.map
 *.scss.map
