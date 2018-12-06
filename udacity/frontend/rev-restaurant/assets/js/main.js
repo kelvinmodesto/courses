@@ -171,7 +171,7 @@ createRestaurantHTML = (restaurant) => {
     const name = document.createElement('h1');
     name.className = 'restaurant-title';
     name.innerHTML = restaurant.name;
-    name.setAttribute('tabindex',0);
+    name.setAttribute('tabindex',1);
     li.append(name);
 
     const link = document.createElement('a');
@@ -185,7 +185,7 @@ createRestaurantHTML = (restaurant) => {
     image.className = 'restaurant-img';
     image.setAttribute('role','presentation');
     image.setAttribute('aria-expanded',false);
-    image.setAttribute('tabindex',0);
+    image.setAttribute('tabindex',1);
     image.setAttributeNode(alt);
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
@@ -197,13 +197,13 @@ createRestaurantHTML = (restaurant) => {
 
     const neighborhood = document.createElement('p');
     neighborhood.className = 'restaurant-paragraph';
-    neighborhood.setAttribute('tabindex',0);
+    neighborhood.setAttribute('tabindex',1);
     neighborhood.innerHTML = restaurant.neighborhood;
     div.append(neighborhood);
 
     const address = document.createElement('p');
     address.className = 'restaurant-paragraph';
-    address.setAttribute('tabindex',0);
+    address.setAttribute('tabindex',1);
     address.innerHTML = restaurant.address;
     div.append(address);
 
@@ -213,6 +213,7 @@ createRestaurantHTML = (restaurant) => {
     more.innerHTML = 'View Details';
     more.classList = 'restaurant-details card-content';
     more.setAttribute('aria-label', 'View Details');
+    more.setAttribute('tabindex',1);
     more.href = DBHelper.urlForRestaurant(restaurant);
 
     li.append(more);
