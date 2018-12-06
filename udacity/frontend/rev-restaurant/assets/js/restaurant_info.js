@@ -77,10 +77,14 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     const image = document.getElementById('restaurant-img');
     image.className = 'restaurant-img';
     image.setAttribute('alt',restaurant.name);
+    image.setAttribute('role','presentation');
+    image.setAttribute('aria-expanded',false);
+    image.setAttribute('tabindex',1);
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
     const cuisine = document.getElementById('restaurant-cuisine');
-    cuisine.setAttribute("tabindex",1);
+    cuisine.setAttribute('tabindex',1);
+    cuisine.setAttribute("role","article");
     cuisine.innerHTML = restaurant.cuisine_type;
 
     // fill operating hours
@@ -97,8 +101,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
  */
 fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
     const hours = document.getElementById('restaurant-hours');
-    hours.setAttribute("tabindex",1);
-
+    hours.setAttribute("role","article");
+    hours.setAttribute('tabindex',1);
     for (let key in operatingHours) {
         const row = document.createElement('tr');
 
@@ -120,6 +124,8 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     const container = document.getElementById('reviews-container');
     const title = document.createElement('h2');
+
+    title.setAttribute('tabindex',1);
     title.innerHTML = 'Reviews';
     container.appendChild(title);
 
@@ -131,6 +137,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     }
 
     const ul = document.getElementById('reviews-list');
+    ul.setAttribute('role','list');
     reviews.forEach(review => {
         ul.appendChild(createReviewHTML(review));
     });
@@ -147,7 +154,7 @@ createReviewHTML = (review) => {
     const date = document.createElement('span');
 
     li.setAttribute('tabindex',1);
-
+    li.setAttribute('role','listitem');
     date.innerHTML = review.date;
     name.innerHTML = review.name;
 
@@ -159,12 +166,13 @@ createReviewHTML = (review) => {
     const container = document.createElement('div');
 
     const rating = document.createElement('p');
+    rating.setAttribute('role','article');
     rating.innerHTML = `Rating: ${review.rating}`;
     rating.className = "review-rating";
 
     const comments = document.createElement('p');
     comments.innerHTML = review.comments;
-
+    comments.setAttribute('role','article');
     container.appendChild(rating);
     container.appendChild(comments);
     container.className = "container";

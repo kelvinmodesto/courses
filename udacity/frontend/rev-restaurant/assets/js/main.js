@@ -66,6 +66,7 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
         const option = document.createElement('option');
         option.innerHTML = cuisine;
         option.value = cuisine;
+        option.setAttribute('role','option');
         select.append(option);
     });
 };
@@ -75,7 +76,7 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
  */
 initMap = () => {
     self.newMap = L.map('map', {
-        center: [40.722216, -73.987501],
+        center: [40.722216,-73.987501],
         zoom: 12,
         scrollWheelZoom: false,
         tabindex:-1
@@ -88,7 +89,6 @@ initMap = () => {
             'Imagery © <a href="https://www.mapbox.com/" tabindex="-1">Mapbox</a>',
         id: 'mapbox.streets'
     }).addTo(newMap);
-
     updateRestaurants();
 };
 
@@ -148,7 +148,10 @@ resetRestaurants = (restaurants) => {
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
     const ul = document.getElementById('restaurants-list');
     const div = document.createElement('div');
+
     div.className = 'container';
+    ul.setAttribute('role','list');
+
     restaurants.forEach(restaurant => {
         div.append(createRestaurantHTML(restaurant));
     });
@@ -163,10 +166,12 @@ createRestaurantHTML = (restaurant) => {
 
     const li = document.createElement('li');
     li.className = 'item';
+    li.setAttribute('role','listitem');
 
     const name = document.createElement('h1');
     name.className = 'restaurant-title';
     name.innerHTML = restaurant.name;
+    name.setAttribute('tabindex',0);
     li.append(name);
 
     const link = document.createElement('a');
@@ -178,6 +183,9 @@ createRestaurantHTML = (restaurant) => {
 
     const image = document.createElement('img');
     image.className = 'restaurant-img';
+    image.setAttribute('role','presentation');
+    image.setAttribute('aria-expanded',false);
+    image.setAttribute('tabindex',0);
     image.setAttributeNode(alt);
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
@@ -189,11 +197,13 @@ createRestaurantHTML = (restaurant) => {
 
     const neighborhood = document.createElement('p');
     neighborhood.className = 'restaurant-paragraph';
+    neighborhood.setAttribute('tabindex',0);
     neighborhood.innerHTML = restaurant.neighborhood;
     div.append(neighborhood);
 
     const address = document.createElement('p');
     address.className = 'restaurant-paragraph';
+    address.setAttribute('tabindex',0);
     address.innerHTML = restaurant.address;
     div.append(address);
 
