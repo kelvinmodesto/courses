@@ -10,7 +10,7 @@ const nock = require('nock')
 describe('Star Wars Tests', function () {
     this.beforeAll(() => {
         const response = {
-            count: 1,!
+            count: 1,
             next: null,
             previous: null,
             results: [{
