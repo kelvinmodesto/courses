@@ -16,6 +16,6 @@
     "serverless-offline": "^6.1.4"
   },
   "dependencies": {
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^9.0.0"
   }
 }
