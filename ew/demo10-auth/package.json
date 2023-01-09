@@ -13,7 +13,7 @@
   "devDependencies": {
     "nodemon": "^2.0.3",
     "serverless": "^1.67.3",
-    "serverless-offline": "^6.1.4"
+    "serverless-offline": "^12.0.4"
   },
   "dependencies": {
     "jsonwebtoken": "^8.5.1"
